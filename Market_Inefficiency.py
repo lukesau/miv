@@ -1,6 +1,10 @@
+# Import necessary libraries
+import dash
+from dash import dcc, html
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
+
 
 default_shape = 'star'
 colors = {
@@ -17,7 +21,7 @@ def interp_color(low_rgb, high_rgb, interp_value):
     return tuple(np.array(low_rgb) + interp_value * (np.array(high_rgb) - np.array(low_rgb)))
 
 # Load CSV data
-file_path = r'C:\Users\Kyle\dev\bestball\CSV\ValueChart.csv'
+file_path = r'ValueChart.csv'
 data = pd.read_csv(file_path)
 # Remove '%' symbol and convert DELTA % to numeric
 data['DELTA %'] = data['DELTA %'].str.rstrip('%').astype(float)
@@ -101,6 +105,20 @@ fig.update_layout(title_text='Market Inefficiency Finder',
                   coloraxis_colorbar=dict(title='DELTA %'),
                   xaxis=dict(tickvals=list(range(1, 13)), ticktext=[f'Col {i}' for i in range(1, 13)]),
                   yaxis=dict(tickvals=list(range(1, 37, 2)), ticktext=[f'Round {i}' for i in range(1, 19)]))
+fig.update_layout(autosize=True)
 
-# Show the plot
-fig.show()
+
+
+
+# Initialize your Dash app
+app = dash.Dash(__name__)
+
+# Define the layout of your app
+app.layout = html.Div([
+    dcc.Graph(
+        id='my-plotly-graph',
+        figure=fig,  # Assuming 'fig' is your Plotly figure object,
+        style={'flex': '1'}
+    ),
+    # You can add more web elements here as needed
+], style={'display': 'flex', 'alignItems': 'stretch', 'width': '100%', 'height': '100vh'})

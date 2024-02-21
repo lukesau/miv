@@ -1,6 +1,6 @@
 import sys
 
-# Add your project directory to the sys.path brazy
+# Add your project directory to the sys.path
 project_home = '/opt/flask-apps/miv-test'
 if project_home not in sys.path:
     sys.path = [project_home] + sys.path

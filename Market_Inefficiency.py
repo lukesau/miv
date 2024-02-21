@@ -21,7 +21,7 @@ def interp_color(low_rgb, high_rgb, interp_value):
     return tuple(np.array(low_rgb) + interp_value * (np.array(high_rgb) - np.array(low_rgb)))
 
 # Load CSV data
-file_path = r'ValueChart.csv'
+file_path = r'/opt/flask-apps/miv-test/ValueChart.csv'
 data = pd.read_csv(file_path)
 # Remove '%' symbol and convert DELTA % to numeric
 data['DELTA %'] = data['DELTA %'].str.rstrip('%').astype(float)

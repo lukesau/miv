@@ -101,7 +101,7 @@ for index, row in data.iterrows():
 # Invert the y-axis range
 fig.update_yaxes(autorange='reversed')
 
-fig.update_layout(title_text='Market Inefficiency Finder',
+fig.update_layout(title_text='Market Inefficiency Visualizer',
                   coloraxis_colorbar=dict(title='DELTA %'),
                   xaxis=dict(tickvals=list(range(1, 13)), ticktext=[f'Col {i}' for i in range(1, 13)]),
                   yaxis=dict(tickvals=list(range(1, 37, 2)), ticktext=[f'Round {i}' for i in range(1, 19)]))

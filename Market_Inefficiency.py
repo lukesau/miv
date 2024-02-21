@@ -111,8 +111,10 @@ fig.update_layout(autosize=True)
 
 
 # Initialize your Dash app
-app = dash.Dash(__name__)
-
+app = dash.Dash(
+    __name__,
+    requests_pathname_prefix='/miv/'
+)
 # Define the layout of your app
 app.layout = html.Div([
     dcc.Graph(

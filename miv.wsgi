@@ -6,4 +6,5 @@ if project_home not in sys.path:
     sys.path = [project_home] + sys.path
 
 # Import your Dash app instance from the app file
-from Market_Inefficiency import app as application
+from Market_Inefficiency import app as dash_app
+application = dash_app.server
